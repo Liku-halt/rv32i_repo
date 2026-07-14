@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Table of Contents  
 - [Project Overview](https://github.com/AngeloJacobo/RISC-V/tree/main#project-overview)
 - [Top Level Diagram (Classic 5-stage Pipeline)](https://github.com/AngeloJacobo/RISC-V/tree/main#top-level-diagram-classic-5-stage-pipeline)
@@ -134,3 +135,6 @@ Support these open-source projects by donating
 
 # Inquiries  
 Connect with me on LinkedIn: https://www.linkedin.com/in/angelo-jacobo/
+=======
+# rv32i_repo
+>>>>>>> fbc17863f7a98a7d918ff6c20e3e499b6db96316
