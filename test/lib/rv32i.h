@@ -20,8 +20,13 @@
 #define GPIO_READ 0x800000F4
 #define GPIO_WRITE 0x800000F8
 
+// SPI memory-mapped addresses
+#define SPI_DATA    0x80000140  // write = send byte, read = received byte
+#define SPI_STATUS  0x80000144  // 1 = busy, 0 = ready
+#define SPI_RX_RDY  0x80000148  // 1 = new byte received
+
 // CLINT memory-mapped registers
-#define CPU_CLK_HZ 12000000
+#define CPU_CLK_HZ 100000000
 #define MTIME_BASE_ADDRESS 0x80000000
 #define MTIMECMP_BASE_ADDRESS 0x80000008
 #define MSIP_BASE_ADDRESS 0x80000010
@@ -117,6 +122,11 @@ uint8_t i2c_read_byte(); //read a byte from the slave (after i2c_write_address()
 void uart_print(char *message); // print characters serially via UART
 int uart_rx_buffer_full(); //check if read buffer is full and data can be read
 char uart_read(); //read data from buffer (make sure to check first if rx buffer is full)
+                  //
+                  //spi starts here
+uint8_t spi_go_rcv( uint8_t data);
+bool spi_available();
+
 
 // Function prototypes for gpio.c
 void toggle_gpio(uint32_t pin_number); //toggle a specific GPIO pin (automatically set pin to write mode)
@@ -156,6 +166,10 @@ float hygroi2c_tempF2C(float tempF);
 
 // Function prototypes for ultrasonic_sensor.c
 int ultrasonic_sensor_cm(int trig_pin, int echo_pin); // returns distance in cm detected by the ultrasonic sensor
+                                                      //
+//fucntions by bk201
+//the AS5600 magnetic encoder 
+uint8_t as5600_begin(void);//for sanity check
 
 
 // Header file for prinf.c Sourced from: https://github.com/mpaland/printf

@@ -1,0 +1,11 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               32M
+Start Address      0x00000000
+End Address        0x01FFFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x000AFB0F    Jul 14 11:53:22 2026    /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_2.bit

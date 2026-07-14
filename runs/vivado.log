@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Jul 14 11:55:15 2026
+# Process ID: 33211
+# Current directory: /home/liku/Documents/Nit_intern_project/RISC-V/runs
+# Command line: vivado -mode tcl
+# Log file: /home/liku/Documents/Nit_intern_project/RISC-V/runs/vivado.log
+# Journal file: /home/liku/Documents/Nit_intern_project/RISC-V/runs/vivado.jou
+#-----------------------------------------------------------
+write_cfgmem     -format mcs     -size 32     -interface SPIx4     -loadbit "up 0x00000000 /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_2.bit"     -force     -file "/home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc_2.mcs"
+Command: write_cfgmem -format mcs -size 32 -interface SPIx4 -loadbit {up 0x00000000 /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_2.bit} -force -file /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc_2.mcs
+Creating config memory files...
+Creating bitstream load up from address 0x00000000
+Loading bitfile /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_2.bit
+Writing file /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc_2.mcs
+Writing log file /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc_2.prm
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               32M
+Start Address      0x00000000
+End Address        0x01FFFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x000AFB0F    Jul 14 11:53:22 2026    /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_2.bit
+0 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_cfgmem completed successfully
+puts "Done: /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc_2.mcs"
+Done: /home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc_2.mcs
+quit
+INFO: [Common 17-206] Exiting Vivado at Tue Jul 14 11:55:29 2026...

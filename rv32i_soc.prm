@@ -1,0 +1,11 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               4M
+Start Address      0x00000000
+End Address        0x003FFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x000AFB0F    Jul  8 19:22:30 2026    /home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/rv32i_soc.bit

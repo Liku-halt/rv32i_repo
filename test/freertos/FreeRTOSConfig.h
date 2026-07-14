@@ -85,7 +85,7 @@
 #define configUSE_PREEMPTION			1
 #define configUSE_IDLE_HOOK				1
 #define configUSE_TICK_HOOK				1
-#define configCPU_CLOCK_HZ				12000000 //Frequency in Hz at which the internal clock that drives the peripheral used to generate the tick interrupt will be executing
+#define configCPU_CLOCK_HZ				100000000 //Frequency in Hz at which the internal clock that drives the peripheral used to generate the tick interrupt will be executing
 #define configTICK_RATE_HZ				( ( TickType_t ) 1000 ) //
 #define configMAX_PRIORITIES			( 5 ) //Each task is assigned a priority from 0 to ( configMAX_PRIORITIES - 1 )
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 128 ) /* Can be as low as 60 but some of the demo tasks that use this constant require it to be higher. */

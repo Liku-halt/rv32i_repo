@@ -1,0 +1,131 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+| Date         : Tue Jul 14 12:59:57 2026
+| Host         : archlinux running 64-bit unknown
+| Command      : report_control_sets -verbose -file rv32i_soc_control_sets_placed.rpt
+| Design       : rv32i_soc
+| Device       : xc7a35t
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    53 |
+|    Minimum number of control sets                        |    53 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   147 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    53 |
+| >= 0 to < 4        |     8 |
+| >= 4 to < 6        |     5 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |     8 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     4 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    25 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              22 |           19 |
+| No           | No                    | Yes                    |             147 |           51 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |             522 |          197 |
+| Yes          | No                    | Yes                    |             617 |          205 |
+| Yes          | Yes                   | No                     |             121 |           47 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+------------------------------------+-------------------------------+------------------+----------------+
+|   Clock Signal   |            Enable Signal           |        Set/Reset Signal       | Slice Load Count | Bel Load Count |
++------------------+------------------------------------+-------------------------------+------------------+----------------+
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[7]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[6]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[3]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[5]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[4]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[2]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[1]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/rd_data_q[0]_i_1_n_0           | i_rst_IBUF                    |                1 |              1 |
+|  i_clk_IBUF_BUFG | i2c/idx_d                          | i_rst_IBUF                    |                2 |              4 |
+|  i_clk_IBUF_BUFG | uart/s_reg_rx[3]_i_1_n_0           | i_rst_IBUF                    |                2 |              4 |
+|  i_clk_IBUF_BUFG | uart/s_reg[3]_i_1_n_0              | i_rst_IBUF                    |                1 |              4 |
+|  i_clk_IBUF_BUFG | m0/m2/o_ce_reg_34[0]               | i_rst_IBUF                    |                2 |              5 |
+|  i_clk_IBUF_BUFG | m0/m3/mie_msie_reg[0]              | i_rst_IBUF                    |                3 |              5 |
+|  i_clk_IBUF_BUFG | m0/m1/E[0]                         | m0/m1/o_ce_reg_1              |                2 |              6 |
+|  i_clk_IBUF_BUFG | m0/m4/i_rst                        | m0/m4/o_wb_addr_data_reg[3]_0 |                1 |              7 |
+|  i_clk_IBUF_BUFG | uart/din_reg[7]_i_1_n_0            | i_rst_IBUF                    |                2 |              8 |
+|  i_clk_IBUF_BUFG | m0/m4/o_wb_we_data_reg_2[0]        | i_rst_IBUF                    |                3 |              8 |
+|  i_clk_IBUF_BUFG | uart/b_reg[7]_i_1_n_0              | i_rst_IBUF                    |                1 |              8 |
+|  i_clk_IBUF_BUFG | m0/m4/pending_request_reg_1[0]     | m0/m3/o_y_reg[1]_0            |                1 |              8 |
+|  i_clk_IBUF_BUFG | m0/m1/E[0]                         | m0/m1/o_inst_reg[31]_8        |                3 |              8 |
+|  i_clk_IBUF_BUFG | uart/dout[7]_i_1_n_0               | i_rst_IBUF                    |                2 |              8 |
+|  i_clk_IBUF_BUFG | i2c/E[0]                           | i_rst_IBUF                    |                4 |              9 |
+|  i_clk_IBUF_BUFG | m0/m4/FSM_onehot_state_q_reg[3][0] | i_rst_IBUF                    |                2 |              9 |
+|  i_clk_IBUF_BUFG | i2c/FSM_onehot_state_q[9]_i_1_n_0  | i_rst_IBUF                    |                2 |             10 |
+|  i_clk_IBUF_BUFG | m0/m4/o_wb_we_data_reg_4[0]        | i_rst_IBUF                    |                3 |             12 |
+|  i_clk_IBUF_BUFG | m0/m1/E[0]                         | m0/m1/o_inst_reg[31]_9        |                7 |             12 |
+|  i_clk_IBUF_BUFG | m0/m4/o_wb_we_data_reg_3[0]        | i_rst_IBUF                    |                4 |             12 |
+|  i_clk_IBUF_BUFG | m0/m4/i_rst_0[0]                   |                               |                5 |             12 |
+|  i_clk_IBUF_BUFG | m0/m3/o_ce_reg_0[0]                | m0/m3/o_funct3_reg[1]_0       |                9 |             16 |
+|  i_clk_IBUF_BUFG | m0/m1/o_ce_reg_0                   |                               |                5 |             20 |
+|  i_clk_IBUF_BUFG |                                    |                               |               19 |             22 |
+|  i_clk_IBUF_BUFG | m0/m1/o_inst[31]_i_1_n_0           |                               |                9 |             32 |
+|  i_clk_IBUF_BUFG | m0/m4/o_wb_addr_data_reg[30]_0[0]  | i_rst_IBUF                    |                9 |             32 |
+|  i_clk_IBUF_BUFG | m0/m1/stalled_pc[31]_i_1_n_0       |                               |                9 |             32 |
+|  i_clk_IBUF_BUFG | m0/m1/stalled_inst0                | i_rst_IBUF                    |               11 |             32 |
+|  i_clk_IBUF_BUFG | m0/m4/o_wb_addr_data_reg[4]_0[0]   | i_rst_IBUF                    |               14 |             32 |
+|  i_clk_IBUF_BUFG | m0/m3/o_imm_reg[5]_0[0]            | i_rst_IBUF                    |                9 |             32 |
+|  i_clk_IBUF_BUFG | m0/m3/o_imm_reg[0]_3[0]            | i_rst_IBUF                    |               13 |             32 |
+|  i_clk_IBUF_BUFG | m0/m3/o_imm_reg[0]_2[0]            | i_rst_IBUF                    |               16 |             32 |
+|  i_clk_IBUF_BUFG | m0/m3/o_imm_reg[0]_1[0]            | i_rst_IBUF                    |               11 |             32 |
+|  i_clk_IBUF_BUFG | m0/m4/o_wb_addr_data_reg[30]_0[1]  | i_rst_IBUF                    |               11 |             32 |
+|  i_clk_IBUF_BUFG | m0/m2/o_ce_reg_0                   | m0/m2/o_rs2_addr_q_reg[2]_0   |               14 |             32 |
+|  i_clk_IBUF_BUFG | m0/m2/o_ce_reg_0                   | m0/m2/o_rs1_addr_q_reg[2]_0   |               10 |             32 |
+|  i_clk_IBUF_BUFG | m0/m3/o_ce_reg_0[0]                |                               |               24 |             58 |
+|  i_clk_IBUF_BUFG | m0/m4/pending_request_reg_1[0]     |                               |               28 |             60 |
+|  i_clk_IBUF_BUFG | m0/zicsr.m6/minstret[0]_i_1_n_0    | i_rst_IBUF                    |               16 |             64 |
+|  i_clk_IBUF_BUFG | m0/zicsr.m6/sel                    | i_rst_IBUF                    |               16 |             64 |
+|  i_clk_IBUF_BUFG | m0/m1/E[0]                         |                               |               35 |             85 |
+|  i_clk_IBUF_BUFG | m0/m3/o_ce_reg_2[0]                |                               |               27 |             94 |
+|  i_clk_IBUF_BUFG | m0/m0/write_to_basereg             |                               |               12 |             96 |
+|  i_clk_IBUF_BUFG | m0/m1/o_iaddr0                     | i_rst_IBUF                    |               38 |            119 |
+|  i_clk_IBUF_BUFG | m0/m2/o_ce_reg_0                   |                               |               55 |            129 |
+|  i_clk_IBUF_BUFG |                                    | i_rst_IBUF                    |               51 |            147 |
++------------------+------------------------------------+-------------------------------+------------------+----------------+
+
+

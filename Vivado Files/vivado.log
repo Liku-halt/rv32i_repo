@@ -1,0 +1,45 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Sat Jul  4 19:37:10 2026
+# Process ID: 29956
+# Current directory: /home/liku/Documents/Nit_intern_project/RISC-V/Vivado Files
+# Command line: vivado -mode tcl
+# Log file: /home/liku/Documents/Nit_intern_project/RISC-V/Vivado Files/vivado.log
+# Journal file: /home/liku/Documents/Nit_intern_project/RISC-V/Vivado Files/vivado.jou
+#-----------------------------------------------------------
+open_hw_manager
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2019.2
+  **** Build date : Nov  6 2019 at 22:13:42
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+****** Xilinx cs_server v2019.2.0
+  **** Build date : Nov 07 2019-11:11:48
+    ** Copyright 2017-2019 Xilinx, Inc. All Rights Reserved.
+
+
+
+localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183794699A
+current_hw_device [lindex [get_hw_devices] 0]
+xc7a35t_0
+set_property PROGRAM.FILE {/home/liku/Documents/Nit_intern_project/RISC-V/Vivado Files/runs/rv32i_soc.bit} [lindex [get_hw_devices] 0]
+ERROR: [Labtools 27-2149] File /home/liku/Documents/Nit_intern_project/RISC-V/Vivado Files/runs/rv32i_soc.bit not found. Check file name and file permissions.
+set_property PROGRAM.FILE {/home/liku/Documents/Nit_intern_project/RISC-V/runs/rv32i_soc.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Jul  4 19:40:33 2026...

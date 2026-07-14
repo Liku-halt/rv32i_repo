@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu Jul  9 18:33:45 2026
+# Process ID: 17649
+# Current directory: /home/liku/Documents/Nit_intern_project/RISC-V/test
+# Command line: vivado -mode tcl
+# Log file: /home/liku/Documents/Nit_intern_project/RISC-V/test/vivado.log
+# Journal file: /home/liku/Documents/Nit_intern_project/RISC-V/test/vivado.jou
+#-----------------------------------------------------------
+write_cfgmem -format mcs -interface SPIx4 -size 16 \
+  -loadbit {up 0x00000000 /home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/rv32i_soc.bit} \
+  -file /home/liku/Documents/Nit_intern_project/RISC-V/rv32i_soc.mcs
+write_cfgmem -force -format mcs -interface SPIx4 -size 16 \
+  -loadbit {up 0x00000000 /home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/rv32i_soc.bit} \
+  -file /home/liku/Documents/Nit_intern_project/RISC-V/rv32i_soc.mcs
+write_cfgmem -force -format mcs -interface SPIx4 -size 4 \
+  -loadbit {up 0x00000000 /home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/rv32i_soc.bit} \
+  -file /home/liku/Documents/Nit_intern_project/RISC-V/rv32i_soc.mcs

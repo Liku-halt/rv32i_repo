@@ -1,0 +1,55 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Wed Jul  8 19:29:11 2026
+# Process ID: 29987
+# Current directory: /home/liku/Documents/Nit_intern_project/RISC-V
+# Command line: vivado -mode tcl
+# Log file: /home/liku/Documents/Nit_intern_project/RISC-V/vivado.log
+# Journal file: /home/liku/Documents/Nit_intern_project/RISC-V/vivado.jou
+#-----------------------------------------------------------
+set_property PROGRAM.FILE {
+  /home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/YOUR_TOP.bit
+} [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Common 17-55] 'set_property' expects at least one object.
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+# 1. Connect to hw_server
+connect_hw_server -allow_non_jtag
+ERROR: [Labtoolstcl 44-235] The labtools system is not initialized. You must execute 'open_hw_manager' to initialize the labtools system prior using this command.
+# 2. Open the hardware target (your Basys3)
+open_hw_target
+ERROR: [Labtoolstcl 44-235] The labtools system is not initialized. You must execute 'open_hw_manager' to initialize the labtools system prior using this command.
+# 3. NOW set the bitstream file (replace YOUR_TOP with your actual top module name)
+set_property PROGRAM.FILE {/home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/rv32i_soc.bit} [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Common 17-55] 'set_property' expects at least one object.
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+# 4. Select the device
+current_hw_device [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+# 5. Program it
+program_hw_devices [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Labtoolstcl 44-24] No devices to program specified
+# 1. Connect to hw_server
+connect_hw_server -allow_non_jtag
+ERROR: [Labtoolstcl 44-235] The labtools system is not initialized. You must execute 'open_hw_manager' to initialize the labtools system prior using this command.
+# 2. Open the hardware target (your Basys3)
+open_hw_target
+ERROR: [Labtoolstcl 44-235] The labtools system is not initialized. You must execute 'open_hw_manager' to initialize the labtools system prior using this command.
+# 3. NOW set the bitstream file (replace YOUR_TOP with your actual top module name)
+set_property PROGRAM.FILE {/home/liku/Documents/Nit_intern_project/RISC-V/vivado_gui/vivado_gui.runs/impl_1/rv32i_soc.bit} [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Common 17-55] 'set_property' expects at least one object.
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+# 4. Select the device
+current_hw_device [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+# 5. Program it
+program_hw_devices [get_hw_devices xc7a35t_0]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Labtoolstcl 44-24] No devices to program specified
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Jul  8 19:31:36 2026...

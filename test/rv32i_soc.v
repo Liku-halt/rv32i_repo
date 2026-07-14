@@ -5,7 +5,7 @@
 //`define ICARUS use faster UARt and I2C rate for faster simulation
 
 //complete package containing the rv32i_core, RAM, and IO peripherals (I2C and UART)
-module rv32i_soc #(parameter CLK_FREQ_MHZ=12, PC_RESET=32'h00_00_00_00, TRAP_ADDRESS=32'h00_00_00_00, ZICSR_EXTENSION=1, MEMORY_DEPTH=81920, GPIO_COUNT = 12) ( 
+module rv32i_soc #(parameter CLK_FREQ_MHZ=100, PC_RESET=32'h00_00_00_00, TRAP_ADDRESS=32'h00_00_00_00, ZICSR_EXTENSION=1, MEMORY_DEPTH=81920, GPIO_COUNT = 12) ( 
     input wire i_clk,
     input wire i_rst,
     //UART
@@ -664,6 +664,8 @@ module main_memory #(parameter MEMORY_DEPTH=1024) ( //Instruction and Data memor
     assign o_wb_stall = 0; // never stall
 
     initial begin //initialize memory to zero
+        ////i am instancing the mem file  here
+        $readmemh("rtos_1.mem", memory_regfile);
         o_ack_inst <= 0;
         o_wb_ack <= 0;
         o_inst_out <= 0;
@@ -1345,13 +1347,3 @@ module gpio #( //UART (TX only)
     
         
 endmodule
-
-
-
-
-
-
-
-
-
-

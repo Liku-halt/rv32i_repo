@@ -44,6 +44,8 @@ uint8_t i2c_read_byte(){ //read a byte from the slave (after i2c_write_address()
     while(*i2c_busy);
     while(*i2c_read_ready == 0){ //while read data is not yet available
     }
+    while(*i2c_busy);///i changed it here it is a blocking one
     read_data = *i2c_read; //retrieve data
+    return read_data;
 };
 
