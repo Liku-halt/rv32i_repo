@@ -10,6 +10,27 @@
 
 extern void freertos_risc_v_trap_handler(void);
 
+//my uart init pvrt
+//
+uart uart_2={
+  .tx_data = vol_uint UART2_TX_DATA,
+  .tx_busy = vol_uint UART2_TX_BUSY,
+  .rx_full = vol_uint UART2_RX_BUFFER_FULL,
+  .rx_data = vol_uint UART2_RX_DATA
+};
+
+uart uart_1={
+  .tx_data = vol_uint UART_TX_DATA,
+  .tx_busy = vol_uint UART_TX_BUSY,
+  .rx_full = vol_uint UART_RX_BUFFER_FULL,
+  .rx_data = vol_uint UART_RX_DATA
+};
+
+
+
+
+
+
 void vApplicationTickHook(void) {
     // empty — blinking is handled by tasks
 }
@@ -50,9 +71,13 @@ void blink_1(void *pvParameters){
 
   }
 }
-void spi_to_stm( void *pvParameters){
+void reading_the_sen( void *pvParameters){
   while(1) {
-    as5600_begin();
+      
+   float result = read_tvoc(&uart_2);
+   printf_("CO: %.1f ppm\r\n", result);
+    
+    
     vTaskDelay(pdMS_TO_TICKS(500));
   }
 }
@@ -70,13 +95,15 @@ void blink_2(void *pvParameters){
 
 
 void main(void){
+  //sensor init step 
+  set_mode_tvoc(&uart_2);
    
 
   csr_write(MTVEC, (uint32_t) &freertos_risc_v_trap_handler);
   xTaskCreate(
     blink_1,
     "led_1_task",
-    512,
+    200,
     NULL,
     1,
     NULL
@@ -86,15 +113,15 @@ void main(void){
   xTaskCreate(
     blink_2,
     "led_2_task",
-    512,
+    200,
     NULL,
     1,
     NULL
   );
   xTaskCreate(
-    spi_to_stm,
+    reading_the_sen,
     "name",
-    400,
+    512,
     NULL,
     1,
     NULL

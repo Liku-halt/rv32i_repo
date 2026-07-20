@@ -15,16 +15,27 @@
 #define UART_RX_BUFFER_FULL 0x80000058
 #define UART_RX_DATA 0x8000005C
 
+/////////////////////////////////////////
+///
+#define vol_uint  (volatile uint32_t *) //this macro is for converting the the const add^rs to pointers
+// UART memory-mapped registers
+#define UART2_TX_DATA 0x80000140
+#define UART2_TX_BUSY 0x80000144
+#define UART2_RX_BUFFER_FULL 0x80000148
+#define UART2_RX_DATA 0x8000014C
+///////////////////////////////////////////
+///
+///
 //GPIO memory-mapped registers
 #define GPIO_MODE 0x800000F0
 #define GPIO_READ 0x800000F4
 #define GPIO_WRITE 0x800000F8
-
+/*
 // SPI memory-mapped addresses
 #define SPI_DATA    0x80000140  // write = send byte, read = received byte
 #define SPI_STATUS  0x80000144  // 1 = busy, 0 = ready
 #define SPI_RX_RDY  0x80000148  // 1 = new byte received
-
+*/
 // CLINT memory-mapped registers
 #define CPU_CLK_HZ 100000000
 #define MTIME_BASE_ADDRESS 0x80000000
@@ -87,6 +98,18 @@
 #define LCD_SHIFT_LEFT 0x18
 #define LCD_SHIFT_RIGHT 0x1E
 #define LCD_TYPE 2 // 0 -> 5x7 | 1 -> 5x10 | 2 -> 2 lines
+                   //
+                   //
+///////////////////////////////////////////////////////////////////////////
+///uart struct 
+typedef struct{
+  volatile uint32_t *tx_data;
+  volatile uint32_t *tx_busy;
+  volatile uint32_t *rx_full;
+  volatile uint32_t *rx_data;
+}uart;
+//////////////////////////////////////////////////////////////////////////
+///
 
 // Function prototypes for clint.c
 void mtime_set_time(uint64_t time); // set current system time.
@@ -123,9 +146,30 @@ void uart_print(char *message); // print characters serially via UART
 int uart_rx_buffer_full(); //check if read buffer is full and data can be read
 char uart_read(); //read data from buffer (make sure to check first if rx buffer is full)
                   //
+ void my_uart_send_byte(uart *uart_struct_pointer, const uint8_t *data, int len);
+ uint8_t my_uart_read_byte(uart *uart_struct_pointer);
+
+///////////////////////////////////////////////////////////////
+//my uart functions 
+//
+void my_uart_print(uart *uart_struct_pointer ,char *message);
+bool my_uart_rx_buffer_full(uart *uart_struct_pointer );
+char my_uart_read(uart *uart_struct_pointer );
+///////////////////////////////////////////////////////////////
                   //spi starts here
 uint8_t spi_go_rcv( uint8_t data);
 bool spi_available();
+
+
+//////////////////////
+///sensors 
+//zeo7
+float read_zeo7(uart *my_uart);
+void set_mode_zeo7(uart *my_uart);
+//tvoc 
+float read_tvoc(uart *my_uart);
+void set_mode_tvoc(uart *my_uart);
+
 
 
 // Function prototypes for gpio.c

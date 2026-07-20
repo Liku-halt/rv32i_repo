@@ -11,6 +11,11 @@ module rv32i_soc #(parameter CLK_FREQ_MHZ=100, PC_RESET=32'h00_00_00_00, TRAP_AD
     //UART
     input wire uart_rx,
     output wire uart_tx,
+    //////////////////////////////////////////////////////////
+    //UART 2 
+    input wire uart2_rx,
+    output wire uart2_tx,
+    //////////////////////////////////////////////////////////////
     //I2C
     inout wire i2c_sda,
     inout wire i2c_scl,
@@ -71,6 +76,20 @@ module rv32i_soc #(parameter CLK_FREQ_MHZ=100, PC_RESET=32'h00_00_00_00, TRAP_AD
     wire device2_wb_ack;
     wire device2_wb_stall;
     wire[31:0] i_device2_wb_data;
+
+    /////////////////////////////////////////////////
+    //wires for uart2 
+    wire device7_wb_cyc;
+    wire device7_wb_stb;
+    wire device7_wb_we;
+    wire[31:0] device7_wb_addr;
+    wire[31:0] o_device7_wb_data;
+    wire[3:0] device7_wb_sel;
+    wire device7_wb_ack;
+    wire device7_wb_stall;
+    wire[31:0] i_device7_wb_data;
+    ////////////////////////////////////////////////
+
 
     wire device3_wb_cyc;
     wire device3_wb_stb;
@@ -171,6 +190,21 @@ module rv32i_soc #(parameter CLK_FREQ_MHZ=100, PC_RESET=32'h00_00_00_00, TRAP_AD
         .i_device2_wb_stall(device2_wb_stall),
         .i_device2_wb_data(i_device2_wb_data),
         
+        //////////////////////////////////////////////////////////////////
+        //device 7 interface uart2 
+        .o_device7_wb_cyc(device7_wb_cyc),
+        .o_device7_wb_stb(device7_wb_stb),
+        .o_device7_wb_we(device7_wb_we),
+        .o_device7_wb_addr(device7_wb_addr),
+        .o_device7_wb_data(o_device7_wb_data),
+        .o_device7_wb_sel(device7_wb_sel),
+        .i_device7_wb_ack(device7_wb_ack),
+        .i_device7_wb_stall(device7_wb_stall),
+        .i_device7_wb_data(i_device7_wb_data),
+        ///////////////////////////////////////////////////////////////
+
+
+
         //Device 3 Interface (I2C)
         .o_device3_wb_cyc(device3_wb_cyc),
         .o_device3_wb_stb(device3_wb_stb),
@@ -279,6 +313,41 @@ module rv32i_soc #(parameter CLK_FREQ_MHZ=100, PC_RESET=32'h00_00_00_00, TRAP_AD
         .uart_rx(uart_rx), //UART RX line
         .uart_tx(uart_tx) //UART TX line
       );
+
+    ///////////////////////////////////////////////////////////////////
+    //device 7 uart 2 
+     uart #( .CLOCK_FREQ(CLK_FREQ_MHZ*1_000_000), //UART (TX only) [memory-mapped to >=h50,<hA0 (MSB=1)]
+            .BAUD_RATE( //UART Baud rate
+              `ifdef ICARUS
+               2_000_000 //faster simulation            delay_count <= 5;
+
+               `else 
+               9600 //9600 Baud
+               `endif),
+            .UART_TX_DATA(32'h8000_0140), //memory-mapped address for TX
+            .UART_TX_BUSY(32'h8000_0144), //memory-mapped address to check if TX is busy (has ongoing request)
+            .UART_RX_BUFFER_FULL(32'h8000_0148), //memory-mapped address  to check if a read has completed
+            .UART_RX_DATA(32'h8000_014C), //memory-mapped address for RX 
+            .DBIT(8), //UART Data Bits
+            .SBIT(1) //UART Stop Bits
+     ) uart2
+     (
+        .clk(i_clk),
+        .rst_n(!i_rst),
+        .i_wb_cyc(device7_wb_cyc),
+        .i_wb_stb(device7_wb_stb),
+        .i_wb_we(device7_wb_we),
+        .i_wb_addr(device7_wb_addr),
+        .i_wb_data(o_device7_wb_data[7:0]),
+        .i_wb_sel(device7_wb_sel),
+        .o_wb_ack(device7_wb_ack),
+        .o_wb_stall(device7_wb_stall),
+        .o_wb_data(i_device7_wb_data[7:0]),
+        .uart_rx(uart2_rx), //UART RX line
+        .uart_tx(uart2_tx) //UART TX line
+      );
+
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // CONTINUE////////////////////////////////////////
     //DEVICE 3
@@ -480,7 +549,19 @@ module memory_wrapper ( //decodes address and access the corresponding memory-ma
     input wire i_device2_wb_ack,
     input wire i_device2_wb_stall,
     input wire[31:0] i_device2_wb_data,
-
+//
+///////////////////////////////////////////////////////////////////
+    //Device 7 Interface (UART2)
+    output reg o_device7_wb_cyc,
+    output reg o_device7_wb_stb,
+    output reg o_device7_wb_we,
+    output reg[31:0] o_device7_wb_addr,
+    output reg[31:0] o_device7_wb_data,
+    output reg[3:0] o_device7_wb_sel,
+    input wire i_device7_wb_ack,
+    input wire i_device7_wb_stall,
+    input wire[31:0] i_device7_wb_data,
+//////////////////////////////////////////////////////////////////
     //Device 3 Interface (I2C)
     output reg o_device3_wb_cyc,
     output reg o_device3_wb_stb,
@@ -541,6 +622,18 @@ module memory_wrapper ( //decodes address and access the corresponding memory-ma
         o_device2_wb_addr = 0;
         o_device2_wb_data = 0;
         o_device2_wb_sel = 0;
+
+        //////////////////////////////////
+        //device7 uart 2 
+        o_device7_wb_cyc = 0;
+        o_device7_wb_stb = 0;
+        o_device7_wb_we = 0;
+        o_device7_wb_addr = 0;
+        o_device7_wb_data = 0;
+        o_device7_wb_sel = 0;
+        /////////////////////////////////
+
+
 
         o_device3_wb_cyc = 0;
         o_device3_wb_stb = 0;
@@ -612,8 +705,22 @@ module memory_wrapper ( //decodes address and access the corresponding memory-ma
                 o_wb_stall = i_device4_wb_stall;
                 o_wb_data = i_device4_wb_data;
             end
+            /////////////////////////////////////////////////////////////////////////////
+            //memory map for uart 2 
+                if(i_wb_addr[11:0] >= 12'h140 && i_wb_addr[11:0] < 12'h190) begin //Device 7 Interface (UART2) (20 words)
+                o_device7_wb_cyc = i_wb_cyc;
+                o_device7_wb_stb = i_wb_stb;
+                o_device7_wb_we = i_wb_we;
+                o_device7_wb_addr = i_wb_addr; 
+                o_device7_wb_data = i_wb_data;
+                o_device7_wb_sel = i_wb_sel; 
+                o_wb_ack = i_device7_wb_ack;
+                o_wb_stall = i_device7_wb_stall;
+                o_wb_data = i_device7_wb_data;
+            end
+            ////////////////////////////////////////////////////////////////////////////////
 
-            if(i_wb_addr[30]) begin //Device 5 Interface (DDR3) (last two bits of address are high)
+            if(i_wb_addr[30]) begin //Device 5 Interface (DDR3) (last two bits of address are high) 
                 o_device5_wb_cyc = i_wb_cyc;
                 o_device5_wb_stb = i_wb_stb;
                 o_device5_wb_we = i_wb_we;

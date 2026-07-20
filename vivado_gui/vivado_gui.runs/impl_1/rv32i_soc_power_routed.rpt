@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date             : Tue Jul 14 13:01:43 2026
+| Date             : Mon Jul 20 12:29:22 2026
 | Host             : archlinux running 64-bit unknown
 | Command          : report_power -file rv32i_soc_power_routed.rpt -pb rv32i_soc_power_summary_routed.pb -rpx rv32i_soc_power_routed.rpx
 | Design           : rv32i_soc
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.168        |
+| Total On-Chip Power (W)  | 0.178        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.095        |
+| Dynamic (W)              | 0.104        |
 | Device Static (W)        | 0.073        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.2         |
-| Junction Temperature (C) | 25.8         |
+| Max Ambient (C)          | 84.1         |
+| Junction Temperature (C) | 25.9         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.008 |        3 |       --- |             --- |
-| Slice Logic              |     0.004 |     3962 |       --- |             --- |
-|   LUT as Logic           |     0.004 |     1896 |     20800 |            9.12 |
-|   Register               |    <0.001 |     1430 |     41600 |            3.44 |
+| Slice Logic              |     0.005 |     4108 |       --- |             --- |
+|   LUT as Logic           |     0.005 |     1994 |     20800 |            9.59 |
+|   Register               |    <0.001 |     1498 |     41600 |            3.60 |
 |   CARRY4                 |    <0.001 |      119 |      8150 |            1.46 |
 |   LUT as Distributed RAM |    <0.001 |       48 |      9600 |            0.50 |
-|   Others                 |     0.000 |       24 |       --- |             --- |
-| Signals                  |     0.009 |     3374 |       --- |             --- |
-| Block RAM                |     0.072 |       32 |        50 |           64.00 |
-| I/O                      |     0.001 |       18 |       106 |           16.98 |
+|   Others                 |     0.000 |       25 |       --- |             --- |
+| Signals                  |     0.011 |     3482 |       --- |             --- |
+| Block RAM                |     0.074 |       32 |        50 |           64.00 |
+| I/O                      |     0.006 |       20 |       106 |           18.87 |
 | Static Power             |     0.073 |          |           |                 |
-| Total                    |     0.168 |          |           |                 |
+| Total                    |     0.178 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.098 |       0.087 |      0.010 |
+| Vccint    |       1.000 |     0.102 |       0.092 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
+| Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -142,16 +142,16 @@ Table of Contents
 +--------------+-----------+
 | Name         | Power (W) |
 +--------------+-----------+
-| rv32i_soc    |     0.095 |
+| rv32i_soc    |     0.104 |
 |   clint      |     0.001 |
-|   m0         |     0.018 |
-|     m0       |     0.001 |
-|     m1       |     0.004 |
-|     m2       |     0.004 |
-|     m3       |     0.003 |
-|     m4       |     0.002 |
+|   gpio       |     0.004 |
+|   m0         |     0.020 |
+|     m1       |     0.005 |
+|     m2       |     0.005 |
+|     m3       |     0.004 |
+|     m4       |     0.003 |
 |     zicsr.m6 |     0.003 |
-|   m1         |     0.073 |
+|   m1         |     0.075 |
 +--------------+-----------+
 
 

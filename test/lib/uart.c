@@ -6,6 +6,14 @@ volatile uint32_t *uart_tx_busy = (volatile uint32_t *) UART_TX_BUSY;
 volatile uint32_t *uart_rx_full = (volatile uint32_t *) UART_RX_BUFFER_FULL;
 volatile uint32_t *uart_rx_data = (volatile uint32_t *) UART_RX_DATA;
 
+volatile uint32_t *uart2_tx_data = (volatile uint32_t *) UART2_TX_DATA;
+volatile uint32_t *uart2_tx_busy = (volatile uint32_t *) UART2_TX_BUSY;
+volatile uint32_t *uart2_rx_full = (volatile uint32_t *) UART2_RX_BUFFER_FULL;
+volatile uint32_t *uart2_rx_data = (volatile uint32_t *) UART2_RX_DATA;
+
+
+
+
 // print characters serially via UART
 void uart_print(char *message) {
     int i = 0;

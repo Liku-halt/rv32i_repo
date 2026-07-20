@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Tue Jul 14 13:01:42 2026
+| Date         : Mon Jul 20 12:29:20 2026
 | Host         : archlinux running 64-bit unknown
 | Command      : report_methodology -file rv32i_soc_methodology_drc_routed.rpt -pb rv32i_soc_methodology_drc_routed.pb -rpx rv32i_soc_methodology_drc_routed.rpx
 | Design       : rv32i_soc
@@ -23,13 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 53
+             Violations found: 54
 +-----------+----------+--------------------------------------------+------------+
 | Rule      | Severity | Description                                | Violations |
 +-----------+----------+--------------------------------------------+------------+
-| SYNTH-6   | Warning  | Timing of a block RAM might be sub-optimal | 4          |
+| SYNTH-6   | Warning  | Timing of a block RAM might be sub-optimal | 3          |
 | SYNTH-15  | Warning  | Byte wide write enable not inferred        | 32         |
-| TIMING-18 | Warning  | Missing input or output delay              | 17         |
+| TIMING-18 | Warning  | Missing input or output delay              | 19         |
 +-----------+----------+--------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -41,15 +41,10 @@ Related violations: <none>
 
 SYNTH-6#2 Warning
 Timing of a block RAM might be sub-optimal  
-The timing for the instance m1/memory_regfile_reg_1_0_7, implemented as a block RAM, might be sub-optimal as no output register was merged into the block
-Related violations: <none>
-
-SYNTH-6#3 Warning
-Timing of a block RAM might be sub-optimal  
 The timing for the instance m1/memory_regfile_reg_2_0_7, implemented as a block RAM, might be sub-optimal as no output register was merged into the block
 Related violations: <none>
 
-SYNTH-6#4 Warning
+SYNTH-6#3 Warning
 Timing of a block RAM might be sub-optimal  
 The timing for the instance m1/memory_regfile_reg_3_0_7, implemented as a block RAM, might be sub-optimal as no output register was merged into the block
 Related violations: <none>
@@ -291,10 +286,20 @@ Related violations: <none>
 
 TIMING-18#16 Warning
 Missing input or output delay  
-An input delay is missing on uart_rx relative to clock(s) sys_clk_pin
+An input delay is missing on uart2_rx relative to clock(s) sys_clk_pin
 Related violations: <none>
 
 TIMING-18#17 Warning
+Missing input or output delay  
+An input delay is missing on uart_rx relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#18 Warning
+Missing input or output delay  
+An output delay is missing on uart2_tx relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#19 Warning
 Missing input or output delay  
 An output delay is missing on uart_tx relative to clock(s) sys_clk_pin
 Related violations: <none>

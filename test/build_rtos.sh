@@ -38,6 +38,7 @@ echo "-> Compiling local project peripheral libraries..."
 for f in lib/*.c; do
   riscv64-unknown-elf-gcc -c -march=rv32i_zicsr -mabi=ilp32 \
     -ffunction-sections -fdata-sections -nostartfiles \
+    -I$FREERTOS_SRC/include -I$FREERTOS_PORT -I./freertos \
     -I./riscv-tests/env/p -I./riscv-tests/isa/macros/scalar -I./lib \
     "$f" -o "./obj/$(basename "$f" .c).o"
 done
